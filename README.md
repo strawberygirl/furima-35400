@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to :user
-- has_many :sold_users_items
+- has_one :sold_user_item
 
 ## sold_users_items テーブル
 
@@ -56,7 +56,7 @@
 |----------------------|-----------|--------------------------------|
 | sold_user_item       | reference | null: false, foreign_key: true |
 | postal_code          | string    | null: false                    |
-| prefecture           | integer   | null: false                    |
+| prefecture_id        | integer   | null: false                    |
 | city                 | string    | null: false                    |
 | address              | string    | null: false                    |
 | building_name        | string    |                                |
