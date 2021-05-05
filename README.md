@@ -17,44 +17,44 @@
 
 - has_many :items
 - has_many :sold_users_items
-- has_many :purchase_options
 
 ## items テーブル
 
-| Column        | Type      | Options                        |
-|---------------|-----------|--------------------------------|
-| user_id       | reference | null: false, foreign_key: true |
-| name          | string    | null: false                    |
-| description   | text      | null: false                    |
-| category      | integer   | null: false                    |
-| item_state    | integer   | null: false                    |
-| shipping_fee  | integer   | null: false                    |
-| shipping_from | integer   | null: false                    |
-| shipping_time | integer   | null: false                    |
-| price         | string    | null: false                    |
+| Column           | Type      | Options                        |
+|------------------|-----------|--------------------------------|
+| user             | reference | null: false, foreign_key: true |
+| name             | string    | null: false                    |
+| description      | text      | null: false                    |
+| category_id      | integer   | null: false                    |
+| item_state_id    | integer   | null: false                    |
+| shipping_fee_id  | integer   | null: false                    |
+| shipping_from_id | integer   | null: false                    |
+| shipping_time_id | integer   | null: false                    |
+| price            | integer   | null: false                    |
 
 ### Association
 
--belongs_to :user
--has_many :sold_users_items
+- belongs_to :user
+- has_many :sold_users_items
 
 ## sold_users_items テーブル
 
 | Column  | Type      | Options                        |
 |---------|-----------|--------------------------------|
-| user_id | reference | null: false, foreign_key: true |
-| item_id | reference | null: false, foreign_key: true |
+| user    | reference | null: false, foreign_key: true |
+| item    | reference | null: false, foreign_key: true |
 
 ### Association
 
--belongs_to :user
--belongs_to :item
+- belongs_to :user
+- belongs_to :item
+- has_one :purchase_option
 
 ## purchase_options
 
 | Column               | Type      | Options                        |
 |----------------------|-----------|--------------------------------|
-| user_id              | reference | null: false, foreign_key: true |
+| sold_user_item       | reference | null: false, foreign_key: true |
 | postal_code          | string    | null: false                    |
 | prefecture           | integer   | null: false                    |
 | city                 | string    | null: false                    |
@@ -64,6 +64,5 @@
 
 ### Association
 
-- belong_to :user
-
+- belongs_to :sold_user_item
 
