@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :sold_user_item
+- has_one :sold_users_item
 
 ## sold_users_items テーブル
 
@@ -64,5 +64,5 @@
 
 ### Association
 
-- belongs_to :sold_user_item
+- belongs_to :sold_users_item
 
