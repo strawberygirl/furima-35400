@@ -1,6 +1,6 @@
 class CreateItems < ActiveRecord::Migration[6.0]
-  def chang
-    create_table :items do |t
+  def change
+    create_table :items do |t|
       t.references :user,             foreign_key: true 
       t.string     :name,             null: false
       t.text       :description,      null: false
