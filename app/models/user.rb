@@ -11,10 +11,14 @@ class User < ApplicationRecord
     validates :nickname         
     validates :email,            uniqueness: { case_sensitive: true }
     validates :password,         format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: "Include both letters and numbers" }, length: { minimum: 6 }
-    validates :family_name,      format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :first_name,       format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :kana_family_name, format: { with: /\A[ァ-ヶー－]+\z/ }
-    validates :kana_first_name,  format: { with: /\A[ァ-ヶー－]+\z/ }
+    with_options format: { with: /\A[ぁ-んァ-ン一-龥]/ } do
+      validates :family_name
+      validates :first_name
+    end
+    with_options format: { with: /\A[ァ-ヶー－]+\z/ } do
+      validates :kana_family_name
+      validates :kana_first_name
+    end
     validates :birthday         
   end
 end
