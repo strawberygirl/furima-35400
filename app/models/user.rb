@@ -5,12 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
-  #has_many :sold_users_items
+  has_many :sold_users_items
 
   with_options presence: true do
-    validates :nickname         
-    validates :email,            uniqueness: { case_sensitive: true }
-    validates :password,         format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: "Include both letters and numbers" }, length: { minimum: 6 }
+    validates :nickname
+    validates :email, uniqueness: { case_sensitive: true }
+    validates :password,
+              format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'Include both letters and numbers' }, length: { minimum: 6 }
     with_options format: { with: /\A[ぁ-んァ-ン一-龥]/ } do
       validates :family_name
       validates :first_name
@@ -19,6 +20,6 @@ class User < ApplicationRecord
       validates :kana_family_name
       validates :kana_first_name
     end
-    validates :birthday         
+    validates :birthday
   end
 end
