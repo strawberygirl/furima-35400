@@ -12,7 +12,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :user_id
-    validates :image # , attached: true
+    validates :image
     validates :name
     validates :description
     with_options numericality: { other_than: 1 } do
