@@ -129,12 +129,12 @@
       <% if @item.presence %>
         <% @item.each do |item| %>
           <li class='list'>
-            <%= link_to '#' do %>
+            <%= link_to item_path(item.id) do %>
               <div class='item-img-content'>
                 <%= image_tag item.image, class: "item-img" %>
 
                 <%# 商品が売れていればsold outを表示しましょう //商品購入機能がまだ実装未完なので残しておきます %>
-                <% if @sold_users_item.presence%>
+                <% if @sold_users_item.presence %>
                   <div class='sold-out'>
                     <span>Sold Out!!</span>
                   </div>
