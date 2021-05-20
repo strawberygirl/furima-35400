@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
-  attr_accessor :token
+  belongs_to :sold_users_item
+  attr_accessor :token, :price
   validates :token, presence: true
 end
