@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
+  #before_action :set_item
   def index
+    @item = Item.find(params[:item_id])
+    @order = Order.new
   end
 
   def create
@@ -26,4 +29,8 @@ class OrdersController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
+
+  #def set_item
+  #  @item = Item.find(params[:item_id])
+  #end
 end
