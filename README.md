@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :sold_users_items
+- has_many :orders
 
 ## items テーブル
 
@@ -35,9 +35,9 @@
 ### Association
 
 - belongs_to :user
-- has_one :sold_users_item
+- has_one :order
 
-## sold_users_items テーブル
+## orders テーブル
 
 | Column  | Type      | Options                        |
 |---------|-----------|--------------------------------|
@@ -48,13 +48,13 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :purchase_option
+- has_one :address
 
-## purchase_options
+## addresses
 
 | Column               | Type      | Options                        |
 |----------------------|-----------|--------------------------------|
-| sold_user_item       | reference | null: false, foreign_key: true |
+| order                | reference | null: false, foreign_key: true |
 | postal_code          | string    | null: false                    |
 | prefecture_id        | integer   | null: false                    |
 | city                 | string    | null: false                    |
@@ -64,5 +64,5 @@
 
 ### Association
 
-- belongs_to :sold_users_item
+- belongs_to :order
 
