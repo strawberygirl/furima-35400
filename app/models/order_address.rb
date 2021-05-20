@@ -11,6 +11,7 @@ class OrderAddress
     validates :city
     validates :address
     validates :phone_number,  format: { with: /\A\d{11}\z/ }
+    validates :building_name, allow_blank: true
   end
 
   def save
