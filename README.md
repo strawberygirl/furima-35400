@@ -28,7 +28,7 @@
 | category_id      | integer   | null: false                    |
 | item_state_id    | integer   | null: false                    |
 | shipping_fee_id  | integer   | null: false                    |
-| shipping_from_id | integer   | null: false                    |
+| prefecture_id    | integer   | null: false                    |
 | shipping_time_id | integer   | null: false                    |
 | price            | integer   | null: false                    |
 

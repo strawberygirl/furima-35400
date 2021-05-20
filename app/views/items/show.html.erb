@@ -8,13 +8,11 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
-      <%# 商品が売れている場合は、sold outを表示しましょう //商品購入機能がまだ実装未完なので残しておきます%>
-      <%# if @sold_users_item.presence%>
-      <div class="sold-out">
-        <span>Sold Out!!</span>
-      </div>
-      <%# end %>
-      <%# //商品が売れている場合は、sold outを表示しましょう //商品購入機能がまだ実装未完なので残しておきます%>
+      <% if @item.order.present? %>
+        <div class="sold-out">
+          <span>Sold Out!!</span>
+        </div>
+      <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -56,7 +54,7 @@
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.shipping_from.name %></td>
+          <td class="detail-value"><%= @item.prefecture.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
