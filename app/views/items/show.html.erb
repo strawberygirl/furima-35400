@@ -22,7 +22,8 @@
         <%= @item.shipping_fee.name %>
       </span>
     </div>
-  <% user_signed_in? && unless @item.order.present? %>
+  <% if user_signed_in? && !@item.order.present? %>
+  <%# user_signed_in? && unless @item.order.present? // 勉強時の見比べ用に今は残しておきます %>
     <% if current_user.id == @item.user.id %>
     <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>

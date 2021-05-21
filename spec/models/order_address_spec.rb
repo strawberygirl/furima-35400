@@ -11,6 +11,9 @@ RSpec.describe OrderAddress, type: :model do
   describe '商品購入' do
     context '商品が購入できる時' do
       it '購入情報が正しい値で全て入力されている時' do
+        expect(@order).to be_valid
+      end
+      it '建物名(building_name)以外の情報が空でなければ購入できる時' do
         @order.building_name = ''
         expect(@order).to be_valid
       end
