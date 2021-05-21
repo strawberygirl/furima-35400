@@ -1,14 +1,11 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
-  before_action :ordered_item, only: [:index]
-
+  before_action :ordered_item
+  before_action :redirect_owner
+  
   def index
-    if current_user == @item.user
-      redirect_to root_path
-    else
-      @order_address = OrderAddress.new
-    end
+    @order_address = OrderAddress.new
   end
 
   def create
@@ -26,6 +23,12 @@ class OrdersController < ApplicationController
 
   def ordered_item
     redirect_to root_path if @item.order.present?
+  end
+
+  def redirect_owner
+    if current_user == @item.user
+      redirect_to root_path
+    end
   end
 
   def order_params

@@ -22,7 +22,7 @@
         <%= @item.shipping_fee.name %>
       </span>
     </div>
-    <% unless @item.order.present? %>
+  <% user_signed_in? && unless @item.order.present? %>
     <% if current_user.id == @item.user.id %>
     <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
@@ -30,7 +30,7 @@
     <% else %>
     <%= link_to "購入画面に進む", item_orders_path(@item.id), class:"item-red-btn"%>
     <% end %>
-    <% end %>
+  <% end %>
     <div class="item-explain-box">
       <span><%= @item.description %></span>
     </div>
