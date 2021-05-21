@@ -11,6 +11,7 @@ RSpec.describe OrderAddress, type: :model do
   describe '商品購入' do
     context '商品が購入できる時' do
       it '購入情報が正しい値で全て入力されている時' do
+        @order.building_name = ''
         expect(@order).to be_valid
       end
     end
@@ -20,6 +21,16 @@ RSpec.describe OrderAddress, type: :model do
         @order.token = ''
         @order.valid?
         expect(@order.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_idが空の時' do
+        @order.user_id = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空の時' do
+        @order.item_id = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Item can't be blank")
       end
       it 'postal_codeが空の時' do
         @order.postal_code = ''
@@ -66,7 +77,7 @@ RSpec.describe OrderAddress, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberが11桁以下の時' do
+      it 'phone_numberが10桁以下の時' do
         @order.phone_number = '123'
         @order.valid?
         expect(@order.errors.full_messages).to include('Phone number is invalid')
